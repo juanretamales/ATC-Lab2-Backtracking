@@ -16,12 +16,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 #include "funciones.h"
 
 
 int main(int argc, char** argv) 
 {
-    
+    clock_t start = clock();
     int entrada[12];
     int largo = 0;
     
@@ -182,5 +183,7 @@ int main(int argc, char** argv)
     {
         printf("Se necesitan como minimo 2 digitos en el archivo entrada.in de los cuales como minimo 1 tiene que ser par. \n");
     }
+    printf("Tiempo transcurrido: %f segundos", ((double)clock() - start) / CLOCKS_PER_SEC);
+ 
     return (EXIT_SUCCESS); 
 }

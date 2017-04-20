@@ -7,6 +7,7 @@
 /* 
  * File:   main.c
  * Author: Juan Retamales
+ * Licence: Atribución-NoComercial-SinDerivadas - CC BY-NC-ND 
  *
  * Created on 15 de abril de 2017, 20:45
  */
@@ -15,14 +16,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
-
-/*
- * Functiones
- */
-int validadorIgualesConsecutivos(int c[], int tamanio);
-int validadorImparImpar(int c1, int c12);
-int validadorConsecutivos(int c[], int tamanio);
+#include "funciones.h"
 
 
 int main(int argc, char** argv) 
@@ -74,74 +68,84 @@ int main(int argc, char** argv)
                     largo++;
                 }
             }
+            else
+            {
+                printf(" - Descartando letra encontrada: %c -",caracter);
+            }
         }
     }
     fclose(archivo);
-    printf("ok \n");
-    printf("Formando las  combinaciones y guardandolo en salida.out...");
-    /* -Creo la combinacion*/
-    FILE *fp;
-    fp = fopen ( "salida.out", "w" );
-    fclose(fp);
-    
-    for ( a = 0; a < largo; a++ )
+    /* Solo creara combinaciones si encontramos alguna entrada, de lo contrario desplegara un mensaje */
+    if(largo>1)
     {
-        for ( b = 0; b < largo; b++ )
+        int salida = 0;
+        printf("ok \n");
+        printf("Formando las  combinaciones posibles y guardandolo en salida.out...");
+        /* -Creo el archivo salida.out sin contenido, y lo reemplaza de ser existente.  */
+        FILE *fp;
+        fp = fopen ( "salida.out", "w" );
+        fclose(fp);
+        /* -Creo la combinacion*/
+        for ( a = 0; a < largo; a++ )
         {
-            for ( c = 0; c < largo; c++ )
+            for ( b = 0; b < largo; b++ )
             {
-                int temp[] = {entrada[a], entrada[b], entrada[c]};
-                if(validadorIgualesConsecutivos(temp,3)==0)
+                for ( c = 0; c < largo; c++ )
                 {
-                    for ( d = 0; d < largo; d++ )
+                    int temp[] = {entrada[a], entrada[b], entrada[c]};
+                    if(validadorIgualesConsecutivos(temp,3)==0)
                     {
-                        int temp2[] = {entrada[a], entrada[b], entrada[c], entrada[d]};
-                        if(validadorIgualesConsecutivos(temp2,4)==0 && validadorConsecutivos(temp2,4)==0)
+                        for ( d = 0; d < largo; d++ )
                         {
-                            for ( e = 0; e < largo; e++ )
+                            int temp2[] = {entrada[a], entrada[b], entrada[c], entrada[d]};
+                            if(validadorIgualesConsecutivos(temp2,4)==0 && validadorConsecutivos(temp2,4)==0)
                             {
-                                int temp3[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e]};
-                                if(validadorIgualesConsecutivos(temp3,5)==0 && validadorConsecutivos(temp3,5)==0)
+                                for ( e = 0; e < largo; e++ )
                                 {
-                                    for ( f = 0; f < largo; f++ )
+                                    int temp3[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e]};
+                                    if(validadorIgualesConsecutivos(temp3,5)==0 && validadorConsecutivos(temp3,5)==0)
                                     {
-                                        int temp4[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f]};
-                                        if(validadorIgualesConsecutivos(entrada,6)==0 && validadorConsecutivos(temp4,6)==0)
+                                        for ( f = 0; f < largo; f++ )
                                         {
-                                            for ( g = 0; g < largo; g++ )
+                                            int temp4[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f]};
+                                            if(validadorIgualesConsecutivos(entrada,6)==0 && validadorConsecutivos(temp4,6)==0)
                                             {
-                                                int temp5[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g]};
-                                                if(validadorIgualesConsecutivos(temp5,7)==0 && validadorConsecutivos(temp5,7)==0)
+                                                for ( g = 0; g < largo; g++ )
                                                 {
-                                                    for ( h = 0; h < largo; h++ )
+                                                    int temp5[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g]};
+                                                    if(validadorIgualesConsecutivos(temp5,7)==0 && validadorConsecutivos(temp5,7)==0)
                                                     {
-                                                        int temp6[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h]};
-                                                        if(validadorIgualesConsecutivos(temp6,8)==0 && validadorConsecutivos(temp6,8)==0)
+                                                        for ( h = 0; h < largo; h++ )
                                                         {
-                                                            for ( i = 0; i < largo; i++ )
+                                                            int temp6[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h]};
+                                                            if(validadorIgualesConsecutivos(temp6,8)==0 && validadorConsecutivos(temp6,8)==0)
                                                             {
-                                                                int temp7[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i]};
-                                                                if(validadorIgualesConsecutivos(temp7,9)==0 && validadorConsecutivos(temp7,9)==0)
+                                                                for ( i = 0; i < largo; i++ )
                                                                 {
-                                                                    for ( j = 0; j < largo; j++ )
+                                                                    int temp7[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i]};
+                                                                    if(validadorIgualesConsecutivos(temp7,9)==0 && validadorConsecutivos(temp7,9)==0)
                                                                     {
-                                                                        int temp8[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j]};
-                                                                        if(validadorIgualesConsecutivos(temp8,10)==0 && validadorConsecutivos(temp8,10)==0)
+                                                                        for ( j = 0; j < largo; j++ )
                                                                         {
-                                                                            for ( k = 0; k < largo; k++ )
+                                                                            int temp8[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j]};
+                                                                            if(validadorIgualesConsecutivos(temp8,10)==0 && validadorConsecutivos(temp8,10)==0)
                                                                             {
-                                                                                int temp9[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k]};
-                                                                                if(validadorIgualesConsecutivos(temp9,11)==0 && validadorConsecutivos(temp9,11)==0)
+                                                                                for ( k = 0; k < largo; k++ )
                                                                                 {
-                                                                                    for ( l = 0; l < largo; l++ )
+                                                                                    int temp9[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k]};
+                                                                                    if(validadorIgualesConsecutivos(temp9,11)==0 && validadorConsecutivos(temp9,11)==0)
                                                                                     {
-                                                                                        int temp10[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k], entrada[l]};
-                                                                                        if(validadorIgualesConsecutivos(temp10,12)==0 && validadorImparImpar(entrada[a],entrada[l])==0 && validadorConsecutivos(temp10,12)==0)
+                                                                                        for ( l = 0; l < largo; l++ )
                                                                                         {
-                                                                                            fp = fopen ( "salida.out", "a" );
-                                                                                            fprintf(fp, "%d%d%d%d%d%d%d%d%d%d%d%d \n", entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k], entrada[l]);
-                                                                                            //printf("%d%d%d%d%d%d%d%d%d%d%d%d \n", entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k], entrada[l]);
-                                                                                            fclose ( fp );
+                                                                                            int temp10[] = {entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k], entrada[l]};
+                                                                                            if(validadorIgualesConsecutivos(temp10,12)==0 && validadorImparImpar(entrada[a],entrada[l])==0 && validadorConsecutivos(temp10,12)==0)
+                                                                                            {
+                                                                                                fp = fopen ( "salida.out", "a" );
+                                                                                                fprintf(fp, "%d%d%d%d%d%d%d%d%d%d%d%d \n", entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k], entrada[l]);
+                                                                                                //printf("%d%d%d%d%d%d%d%d%d%d%d%d \n", entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k], entrada[l]);
+                                                                                                fclose ( fp );
+                                                                                                salida++;
+                                                                                            }
                                                                                         }
                                                                                     }
                                                                                 }
@@ -150,8 +154,8 @@ int main(int argc, char** argv)
                                                                     }
                                                                 }
                                                             }
-                                                        }
 
+                                                        }
                                                     }
                                                 }
                                             }
@@ -163,61 +167,20 @@ int main(int argc, char** argv)
                     }
                 }
             }
+        } 
+        printf("ok \n");
+        if(salida==0)
+        {
+            printf("No hubieron combinaciones validas para salida.out, revisa los numeros ingresados y asegurate de que minimo tengas 1 numero par. \n");
+        }
+        else
+        {
+            printf("\n Se lograron crear %d combinaciones validas.", salida);
         }
     }
-    
-    printf("ok \n");
+    else
+    {
+        printf("Se necesitan como minimo 2 digitos en el archivo entrada.in de los cuales como minimo 1 tiene que ser par. \n");
+    }
     return (EXIT_SUCCESS); 
-}
-/*
- * validadorIgualesConsecutivos  - verifica que no existan 3 numeros iguales consecutivos
- *
- *Entrada: arreglo de 12 numeros de formato int.
- *Salida: Numero int 1 si existen 3 numeros iguales consecutivos o 0 de lo contrario.
- */
-int validadorIgualesConsecutivos(int c[], int tamanio)
-{
-    for(int m=0; m<(tamanio-2); m++)
-    {
-        if(c[m]==c[m+1] && c[m+1]==c[m+2])
-        {
-            return 1;
-        }
-    }
-    return 0;
-}
-/*
- * validadorImparImpar - verifica que si el primer numero es impar, no termine en impar
- *
- *Entrada: 2 numeros de formato int.
- *Salida: Numero int 0 o 1.
- */
-int validadorImparImpar(int c1, int c12)
-{
-    if(c1%2==1 && c12%2==1)
-    {
-        return 1;
-    }
-    return 0;
-}
-
-/*
- * validadorConsecutivos - verifica que no tenga mas de 3 numeros consecutivos
- *
- *Entrada: 12 numeros de formato int.
- *Salida: Numero int 1 si existen 4 numeros consecutivos o 0 de lo contrario.
- */
-int validadorConsecutivos(int c[], int tamanio)
-{
-    for(int m=0; m<(tamanio-4); m++)
-    {
-        if((c[m]+4)<10)
-        {
-            if((c[m]+1)==(c[m+1]) && (c[m]+2)==(c[m+2]) && (c[m]+3)==(c[m+3]) && (c[m]+4)==(c[m+4]))
-            {
-                return 1;
-            }
-        }
-    }
-    return 0;
 }

@@ -37,7 +37,7 @@ int validadorIgualesConsecutivos(int c[], int tamanio)
  * validadorImparImpar - verifica que si el primer numero es impar, no termine en impar
  *
  *Entrada: 2 numeros de formato int.
- *Salida: Numero int 1 si ambos son impar o 1 de lo contrario.
+ *Salida: Numero int 1 si ambos son impar o 0 de lo contrario.
  */
 int validadorImparImpar(int c1, int c12)
 {
@@ -56,7 +56,7 @@ int validadorImparImpar(int c1, int c12)
  */
 int validadorConsecutivos(int c[], int tamanio)
 {
-    for(int m=0; m<(tamanio-4); m++)
+    for(int m=0; m<(tamanio-3); m++)
     {
         if((c[m]+4)<10)
         {

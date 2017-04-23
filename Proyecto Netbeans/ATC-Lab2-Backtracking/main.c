@@ -143,7 +143,6 @@ int main(int argc, char** argv)
                                                                                             {
                                                                                                 fp = fopen ( "salida.out", "a" );
                                                                                                 fprintf(fp, "%d%d%d%d%d%d%d%d%d%d%d%d \n", entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k], entrada[l]);
-                                                                                                //printf("%d%d%d%d%d%d%d%d%d%d%d%d \n", entrada[a], entrada[b], entrada[c], entrada[d], entrada[e], entrada[f], entrada[g], entrada[h], entrada[i], entrada[j], entrada[k], entrada[l]);
                                                                                                 fclose ( fp );
                                                                                                 salida++;
                                                                                             }

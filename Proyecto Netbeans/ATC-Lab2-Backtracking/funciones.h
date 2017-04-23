@@ -19,7 +19,7 @@
      * validadorImparImpar - verifica que si el primer numero es impar, no termine en impar
      *
      *Entrada: 2 numeros de formato int.
-     *Salida: Numero int 1 si ambos son impar o 1 de lo contrario.
+     *Salida: Numero int 1 si ambos son impar o 0 de lo contrario.
      */
     int validadorImparImpar(int c1, int c12);
     /*
